@@ -18,7 +18,7 @@ plugins {
 
 // Memory leak???
 val prop = Properties().apply {
-    load(FileInputStream(File(rootProject.rootDir, "app/src/main/resources/chaching.properties")))
+    load(FileInputStream(File(rootProject.rootDir, "app/src/main/resources/application.properties")))
 }
 val customVersion: String = prop.getProperty("version")
 
