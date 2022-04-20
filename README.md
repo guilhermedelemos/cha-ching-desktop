@@ -3,11 +3,7 @@
 ## Running the application
 
 ```
-$ ./gradlew run
-$ ./gradlew build
-$ ./gradlew test
-$ ./gradlew clean
-$ ./gradlew run --args='a1 a2'
+$ ./gradlew bootRun
 ```
 
 ## Documentation
