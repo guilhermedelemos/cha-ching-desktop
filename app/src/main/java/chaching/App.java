@@ -14,7 +14,9 @@ import com.google.common.hash.Hashing;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import chaching.ui.MainUI;
+import chaching.modules.auth.AuthenticationService;
+import chaching.modules.dashboard.MainUI;
+import chaching.modules.initialization.InitializerService;
 import lombok.Getter;
 
 public class App {
@@ -34,6 +36,9 @@ public class App {
   @Getter
   private final JFrame mainUI;
 
+  private final InitializerService initializerService;
+  private final AuthenticationService authenticationService;
+
   public App() {
     this.name = "Cha-Ching!"; // TO-DO get from config
     this.version = "1.0.1"; // TO-DO get from config
@@ -41,6 +46,8 @@ public class App {
     this.logger = LogManager.getLogger(this.name + this.version);
     this.logger.debug("debug");
     this.mainUI = new MainUI();
+    this.initializerService = new InitializerService();
+    this.authenticationService = new AuthenticationService();
   }
 
   public String getHashedID() {
@@ -52,6 +59,9 @@ public class App {
     this.logger.debug("debug");
     this.logger.debug("args " + Arrays.toString(args));
     this.logProperties();
+    
+    this.initializerService.initialize();
+    this.authenticationService.authenticate();
     this.mainUI.setVisible(true);
   }
 

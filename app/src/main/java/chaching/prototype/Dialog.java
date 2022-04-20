@@ -1,4 +1,4 @@
-package chaching;
+package chaching.prototype;
 
 import javax.swing.*;
 

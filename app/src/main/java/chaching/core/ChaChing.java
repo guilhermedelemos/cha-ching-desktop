@@ -1,4 +1,4 @@
-package chaching;
+package chaching.core;
 
 import java.util.UUID;
 
@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import lombok.Getter;
 
-public class ChaChing {
+public abstract class ChaChing {
   
   @Getter
   private final String id;
@@ -18,7 +18,18 @@ public class ChaChing {
   public ChaChing() {
     this.id = UUID.randomUUID().toString();
     this.logger = LogManager.getLogger("Cha-Ching!1.0.1"); // TO-DO get from a configuration file
-    this.logger.debug("debug");
+  }
+
+  public String getClassName() {
+    return this.getClass().getSimpleName();
+  }
+
+  public String getMethodName() {
+    return new Object() {}.getClass().getEnclosingMethod().getName();
+  }
+
+  public String getClassAndMethodNames(String method) {
+    return this.getClassName() + "." + method + "()";
   }
 
 }

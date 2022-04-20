@@ -1,9 +1,8 @@
-package chaching.ui;
+package chaching.modules.dashboard;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -15,23 +14,26 @@ import javax.swing.JTextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import chaching.core.StandardUI;
 import lombok.Getter;
 
-public class MainUI extends JFrame {
+public class MainUI extends StandardUI {
 
   @Getter
   private final Logger logger = LogManager.getLogger("ChaChing");
 
   public MainUI() {
-    super("Cha-Ching!");
-    this.logger.debug("debug");
+    super("Cha-Ching!"); // TO-DO get from config file
+    this.getLogger().debug(this.getClassName());
     this.build();
   }
 
-  private void build() {
-    this.logger.debug("debug");
+  protected void build() {
+    String method = new Object() {}.getClass().getEnclosingMethod().getName();
+    this.getLogger().debug(this.getClassAndMethodNames(method));
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setSize(800, 600);
+    this.setLocationRelativeTo(null);
     // setIconImage(new ImageIcon(imgURL).getImage());
 
     JMenuBar mb = new JMenuBar();
@@ -68,7 +70,7 @@ public class MainUI extends JFrame {
     this.getContentPane().add(BorderLayout.SOUTH, panel);
     this.getContentPane().add(BorderLayout.NORTH, mb);
     this.getContentPane().add(BorderLayout.CENTER, ta);
-    this.setVisible(true);
+    // this.setVisible(true);
   }
   
 }

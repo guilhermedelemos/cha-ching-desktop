@@ -1,4 +1,4 @@
-package chaching;
+package chaching.prototype;
 
 import org.apache.logging.log4j.LogManager;
 
